@@ -34,13 +34,13 @@ int findMinTimeForBuild(std::vector<Building> &buildings, int willBuildBuilding)
     if (buildings[willBuildBuilding].preBuilded.empty())
         return buildings[willBuildBuilding].time;
 
+    buildings[willBuildBuilding].isCal = true;
+
     int max = 0;
     int preBuild;
     int size = buildings[willBuildBuilding].preBuilded.size();
-    while (!buildings[willBuildBuilding].preBuilded.empty()) {
-        preBuild = buildings[willBuildBuilding].preBuilded.back();
-        buildings[willBuildBuilding].preBuilded.pop_back();
-
+    for (int i = 0; i < size; ++i) {
+        preBuild = buildings[willBuildBuilding].preBuilded[i];
         max = std::max(max, findMinTimeForBuild(buildings, preBuild));
     }
 

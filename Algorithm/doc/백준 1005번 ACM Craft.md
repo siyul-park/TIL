@@ -135,13 +135,13 @@ int findMinTimeForBuild(std::vector<Building> &buildings, int willBuildBuilding)
     if (buildings[willBuildBuilding].preBuilded.empty())
         return buildings[willBuildBuilding].time;
 
+    buildings[willBuildBuilding].isCal = true;
+
     int max = 0;
     int preBuild;
     int size = buildings[willBuildBuilding].preBuilded.size();
-    while (!buildings[willBuildBuilding].preBuilded.empty()) {
-        preBuild = buildings[willBuildBuilding].preBuilded.back();
-        buildings[willBuildBuilding].preBuilded.pop_back();
-
+    for (int i = 0; i < size; ++i) {
+        preBuild = buildings[willBuildBuilding].preBuilded[i];
         max = std::max(max, findMinTimeForBuild(buildings, preBuild));
     }
 
@@ -189,13 +189,13 @@ int findMinTimeForBuild(std::vector<Building> &buildings, int willBuildBuilding)
     if (buildings[willBuildBuilding].preBuilded.empty())
         return buildings[willBuildBuilding].time;
 
+    buildings[willBuildBuilding].isCal = true;
+
     int max = 0;
     int preBuild;
     int size = buildings[willBuildBuilding].preBuilded.size();
-    while (!buildings[willBuildBuilding].preBuilded.empty()) {
-        preBuild = buildings[willBuildBuilding].preBuilded.back();
-        buildings[willBuildBuilding].preBuilded.pop_back();
-
+    for (int i = 0; i < size; ++i) {
+        preBuild = buildings[willBuildBuilding].preBuilded[i];
         max = std::max(max, findMinTimeForBuild(buildings, preBuild));
     }
 
@@ -241,5 +241,6 @@ int main() {
 - 첫 구현부터 DP, DFS를 사용하여서 구현하였으나 전에 탐색해야 하는 노드들을 검색할때 노드들을 저장하고 있는 컨테이너의 size() 함수를 호출해서 시간 초과가 나왔다.
 - 그후 size()를 루프 전에 호출하여 저장하였으나 그래도 시간 초과가 나왔다.
 - 그래서 컨테이너가 비워지지 않았을 경우 루프를 돌고 루프를 돌면서 컨테이너 내부 요소들을 제거하니 성공했다.
+- 그후 시간 초과의 원인을 알았는데. DP 구현부분이 삭제 되어 있었다.
 - 컴파일 에러는 사용 텍스트 편집기의 저장 충돌 문제로 소스코드가 복사전 손상된 것이 원인중 하나이고 나머지 하나는 나의 부주의다.
 - 구현후 적절하게 구현을 수정 하는 시간이 너무 오래 걸린다. 구현전 알고리즘을 어떻게 구현할지 정하고 빠르게 오류없이 구현 하는 것을 연습해야한다.
