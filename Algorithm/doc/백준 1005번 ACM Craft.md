@@ -131,11 +131,11 @@ std::cout << time << '\n';
 int findMinTimeForBuild(std::vector<Building> &buildings, int willBuildBuilding) { 
     if (buildings[willBuildBuilding].isCal)
         return buildings[willBuildBuilding].time;
+    
+    buildings[willBuildBuilding].isCal = true;
 
     if (buildings[willBuildBuilding].preBuilded.empty())
         return buildings[willBuildBuilding].time;
-
-    buildings[willBuildBuilding].isCal = true;
 
     int max = 0;
     int preBuild;
@@ -185,11 +185,11 @@ std::vector<Building> analyseInputData() {
 int findMinTimeForBuild(std::vector<Building> &buildings, int willBuildBuilding) { 
     if (buildings[willBuildBuilding].isCal)
         return buildings[willBuildBuilding].time;
+    
+    buildings[willBuildBuilding].isCal = true;
 
     if (buildings[willBuildBuilding].preBuilded.empty())
         return buildings[willBuildBuilding].time;
-
-    buildings[willBuildBuilding].isCal = true;
 
     int max = 0;
     int preBuild;
