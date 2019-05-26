@@ -89,17 +89,13 @@ string getDeparture(int numOfA, int numOfB, int numOfC) {
 int main() {
     int numOfA{0}, numOfB{0}, numOfC{0};
 
-    string S{};
-    cin >> S;
-
-    int length = S.length();
-
-    for (int i = 0; i < length; ++i) {
-        if (S[i] == 'A')
+    char ch;
+    while ((ch = getchar()) != '\n') {
+        if (ch == 'A')
             numOfA++;
-        else if (S[i] == 'B')
+        else if (ch == 'B')
             numOfB++;
-        else if (S[i] == 'C')
+        else if (ch == 'C')
             numOfC++;
     }
 
