@@ -1,0 +1,104 @@
+/*{
+    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
+    // 기존 특성에 대한 설명을 보려면 가리킵니다.
+    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "customLaunchSetupCommands": [
+                {
+                    "text": "target-run",
+                    "description": "run target",
+                    "ignoreFailures": false
+                }
+            ],
+            "launchCompleteCommand": "exec-run",
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/bin/gdb",
+                "program": "${workspaceRoot}/debug/${fileBasenameNoExtension}.out"
+            },
+            "windows": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "C:\\MinGw\\bin\\gdb.exe",
+                "program": "${workspaceRoot}/debug/${fileBasenameNoExtension}.exe"
+            }
+        }
+    ]
+}*/
+{
+    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
+    // 기존 특성에 대한 설명을 보려면 가리킵니다.
+    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch-internal",
+            "type": "cppdbg",
+            "request": "launch",
+            "args": [],
+            "stopAtEntry": false,
+
+            "linux": {
+                "miDebuggerPath": "/usr/bin/gdb",
+                "program": "${workspaceRoot}/build/debug/${fileBasenameNoExtension}.out"
+            },
+            "windows": {
+                "miDebuggerPath": "C:\\MinGw\\bin\\gdb.exe",
+                "program": "${workspaceRoot}\\build\\debug\\${fileBasenameNoExtension}.exe"
+            },
+
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+
+            "externalConsole": false,
+            
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "(gdb) Launch-external",
+            "type": "cppdbg",
+            "request": "launch",
+            "args": [],
+            "stopAtEntry": false,
+
+            "linux": {
+                "miDebuggerPath": "/usr/bin/gdb",
+                "program": "${workspaceRoot}/build/debug/${fileBasenameNoExtension}.out"
+            },
+            "windows": {
+                "miDebuggerPath": "C:\\MinGw\\bin\\gdb.exe",
+                "program": "${workspaceRoot}\\build\\debug\\${fileBasenameNoExtension}.exe"
+            },
+
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+
+            "externalConsole": true,
+            
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
