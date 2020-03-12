@@ -1,7 +1,7 @@
 const readline = require('readline');
 
 let K;
-function replaceString(str) {
+function normalize(str) {
     return str.trim()
         .replace(/[({[]/gi, '(')
         .replace(/[)}\]]/gi, ')')
@@ -21,13 +21,7 @@ function replaceString(str) {
 }
 
 function solve(str1, str2) {
-    const result1 = replaceString(str1);
-    const result2 = replaceString(str2);
-
-    console.log(result1);
-    console.log(result2);
-
-    return result1 === result2;
+    return normalize(str1) === normalize(str2);
 }
 
 const read = readline.createInterface(process.stdin, process.stdout);
