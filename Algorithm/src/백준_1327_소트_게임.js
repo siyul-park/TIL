@@ -14,7 +14,7 @@ function reverse(arr = [], start = 0, size = 0) {
 }
 
 function solve(arr = [], size) {
-    const target = JSON.stringify([...arr].sort());
+    const target = JSON.stringify([...arr.sort()]);
     const set = new Set();
 
     const que = [];
