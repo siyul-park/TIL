@@ -89,7 +89,7 @@ read.on('line', (line = '') => {
     if (lineIndex === 1) {
         const token = line.split(' ');
         N = Number(token[0]);
-        M = Number(token[0]);
+        M = Number(token[1]);
     } else {
         boardIndex++;
         board.push(line.split(''));
