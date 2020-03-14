@@ -34,8 +34,9 @@ const move = [
     { x: 0, y: +1 },
 ];
 
-const visit = new Set();
 function solve(board = []) {
+    const visit = new Set();
+    
     const coins = findCoinPosition(board);
     removeCoin(board);
 
