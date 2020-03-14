@@ -1,5 +1,6 @@
 const readline = require('readline');
 
+// Can't solve only js
 function solve(n) {
     const result = [0, 1];
 
@@ -7,7 +8,7 @@ function solve(n) {
         result.push(result[i - 1] + result[i - 2]);
     }
 
-    return result;
+    return result[n];
 }
 
 const read = readline.createInterface(process.stdin, process.stdout);
