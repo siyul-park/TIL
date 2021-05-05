@@ -1,61 +1,40 @@
-import java.lang.Integer.max
-import java.lang.Integer.min
 import java.util.*
 
-data class Link(
-    val min: Int,
-    val max: Int
-) {
-    companion object {
-        fun of(a: Int, b: Int): Link {
-            val min = min(a, b)
-            val max = max(a, b)
-
-            return Link(min, max)
-        }
-    }
-}
-
 fun solve(array: String, edge: Map<Int, List<Int>>): Int {
-    val inner = array
-        .mapIndexed { i, char -> i to char }
-        .filter { (_, char) -> char == '1' }
-        .map { (i, _) -> i }
+    var count = 0
 
-    val cache = mutableMapOf<Link, Boolean>()
-    fun isCanLinked(link: Link): Boolean = cache[link] ?: run {
-        val (start, end) = link
-        if (start == end) {
-            return@run true
-        }
-
-        edge[start]?.let { it.forEach { next ->
-            if (array[next] == '1') {
-                if (next == end) {
-                    return@run true
-                } else {
-                    return@forEach
-                }
-            } else {
-                if (isCanLinked(Link.of(next, end))) {
-                    return@run true
-                }
+    edge.filterKeys { array[it] == '1' }
+        .forEach { (_, link) -> link.forEach { end ->
+            if (array[end] == '1') {
+                count++
             }
         } }
 
-        false
-    }.apply { cache[link] = this }
+    val visited = MutableList(array.length) { false }
+    fun search(current: Int): Int {
+        if (array[current] == '1') {
+            return 1
+        }
 
-    var count = 0
-    for (i in inner.indices) {
-        for (j in i + 1 until inner.size) {
-            if (isCanLinked(Link.of(inner[i], inner[j]))) {
-                count++
-            }
+        if (visited[current]) {
+            return 0
+        }
+        visited[current] = true
+
+        return edge[current]
+            ?.map { search(it) }
+            ?.sum()
+            ?: 0
+    }
+
+    for (i in array.indices) {
+        if (array[i] == '0') {
+            val linked = search(i)
+            count += linked * (linked - 1)
         }
     }
 
-    return count * 2
+    return count
 }
 
 fun main() = with(Scanner(System.`in`)) {
