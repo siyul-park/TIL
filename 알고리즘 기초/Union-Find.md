@@ -22,14 +22,13 @@ make-set(x)
 union(x, y)
 
 - 합하기
-- x가 속한 집합과 y가 속한 집합을 합친다. 즉, x와 y가 속한 두 집합을 합치는 연산
+- x가 속한 집합과 y가 속한 집합을 합친다.
 
 find(x)
 
 - 찾기
 
-- x가 속한 집합의 대표값(루트 노드 값)을 반환한다. 즉, x가 어떤 집합에 속해 있는지 찾는 연산
-
+- x가 속한 집합의 대표값(루트 노드 값)을 반환한다.
   
 # Reference
 https://gmlwjd9405.github.io/2018/08/31/algorithm-union-find.html
